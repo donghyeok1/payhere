@@ -1,15 +1,14 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 
+
 class UserManager(BaseUserManager):
     def create_user(self, phone_number, password=None):
         if not phone_number:
-            raise ValueError('Users must have a phone number')
-
+            raise ValueError("Users must have a phone number")
         user = self.model(
             phone_number=phone_number,
         )
-
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -31,4 +30,4 @@ class User(AbstractBaseUser):
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'phone_number'
+    USERNAME_FIELD = "phone_number"
