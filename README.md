@@ -112,6 +112,7 @@
 > - 응답
 > 
 > ![image](https://user-images.githubusercontent.com/95459089/236670954-1a5d98a7-8ebe-4362-b97e-edb012f1ee3f.png)
+>
 > ##### 로그아웃
 >
 > - access_token 세팅
@@ -211,6 +212,7 @@
 > - 응답
 >
 > ![image](https://user-images.githubusercontent.com/95459089/236671949-5113799d-0674-4259-a9fd-fb31fe4fa3d6.png)
+> 
 > **상품 목록이 10개가 넘어가는 경우 해당**
 >
 
@@ -225,24 +227,31 @@
 > ```bash
 > git clone https://github.com/donghyeok1/payhere.git
 > ```
+>
 > **2. backend 환경 설정**
 >
 > ```bash
 > cd payhere
 > ```
+>
 > **2-1 환경 세팅**
 >
 > [django secret key 생성 사이트](https://djecrety.ir/)
+>
 > ![image](https://user-images.githubusercontent.com/95459089/236672311-f2839045-0ecd-4175-8e6a-f723e85fbf65.png)
-> **이동 후, Generate 클릭 후 키 복사**
+>
+> - 이동 후, Generate 클릭 후 키 복사
 > - .env 파일
+>
 > ![image](https://user-images.githubusercontent.com/95459089/236672353-274c6933-0edb-47ef-abd2-addd7fc95370.png)
-> **위의 사이트에서 생성한 secret key를 SECRET_KEY= 넣어주기
-> **나머지는 위의 그림처럼 입력**
+>
+> - **위의 사이트에서 생성한 secret key를 SECRET_KEY= 넣어주기
+> - **나머지는 위의 그림처럼 입력**
 > 
 >
 > **2-2 컨테이너 실행**
 > - docker-compose.yml이 있는 디렉토리로 이동
+> 
 > ```bash
 > docker compose up
 > ```
@@ -251,10 +260,14 @@
 > - 이미지를 전부 가져오고, 빌드하는 과정에서 backend는 mysql과 연동 오류를 없애기 위해 dockerfile 실행 후, 20초의 sleep을 가지고 command를 실행한다.
 > - 조금 기다린 후 확인
 > - MySQL Workbench 접속.(127.0.0.1, root, qwer1234)
+>
 > ![image](https://user-images.githubusercontent.com/95459089/236672616-102bf871-6303-4426-805e-74bf498d25f9.png)
+> 
 > - web 데이터베이스가 생기고, migrate가 잘 된 것을 확인할 수 있다.
 > - payhere-backend 컨테이너 log 확인
+> 
 > ![image](https://user-images.githubusercontent.com/95459089/236672651-0e6bd5f3-50e7-435b-ae57-9e0a2b3309e6.png)
+> 
 > - 서버가 잘 구동되는 것을 확인할 수 있다.
 > 
 
