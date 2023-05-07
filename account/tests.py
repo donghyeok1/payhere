@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
+from django.db import connection
 from rest_framework import status
 from rest_framework.reverse import reverse
 from rest_framework.test import APITestCase, APIClient
@@ -97,7 +98,7 @@ class LogInAPITest(APITestCase):
     # setUpTestData는 한번만 실행되기 때문에 로그인 테스트를 할 때에는 각 함수들이 실행될 때마다 실행되는 setUp을 씀.
     def setUp(self):
         """기본적인 유저 설정 및 로그인 url 설정"""
-        self.phone_number = "test@naver.com"
+        self.phone_number = "01055745810"
         self.password = "test123!"
         self.user = self.User.objects.create(
             phone_number=self.phone_number, password=make_password(self.password)
@@ -148,7 +149,7 @@ class LogInAPITest(APITestCase):
         }
 
         response = self.client.post(self.login_url, data=data, format="json")
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_login_fail_wrong_phone_number_password(self):
         """로그인 실패 : 잘못된 이메일 + 잘못된 비밀번호"""
@@ -159,7 +160,7 @@ class LogInAPITest(APITestCase):
         }
 
         response = self.client.post(self.login_url, data=data, format="json")
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
 
 class LogOutAPITest(APITestCase):

@@ -18,6 +18,7 @@ class UserManager(BaseUserManager):
             phone_number=phone_number,
             password=password,
         )
+        user.is_staff = True
         user.is_admin = True
         user.save(using=self._db)
         return user
@@ -27,6 +28,13 @@ class User(AbstractBaseUser):
     phone_number = models.CharField(max_length=20, unique=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
+
+    def has_perm(self, perm, obj=None):
+        return True
+
+    def has_module_perms(self, app_label):
+        return True
 
     objects = UserManager()
 

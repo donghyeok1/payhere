@@ -45,7 +45,6 @@ ALLOWED_HOSTS = []
 #     },
 # }
 
-# Application definition
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -103,7 +102,7 @@ DATABASES = {
         "NAME": "web",
         "USER": "root",
         "PASSWORD": "qwer1234",
-        # 'HOST': 'db',
+        # "HOST": "db",
         "HOST": "127.0.0.1",
         "PORT": "3306",
         "OPTIONS": {
@@ -111,6 +110,11 @@ DATABASES = {
             "charset": "utf8mb4",
             "use_unicode": True,
             "cursorclass": DictCursor,
+            "collation": "utf8mb4_unicode_ci",
+        },
+        "TEST": {
+            "CHARSET": "utf8mb4",
+            "COLLATION": "utf8mb4_unicode_ci",
         },
     },
 }
@@ -165,6 +169,10 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication"
     ],
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.CursorPagination",
+    "PAGE_SIZE": 10,
+    "ORDERING_PARAM": "cursor",
+    "EXCEPTION_HANDLER": "product.exceptions.custom_exception_handler",
 }
 
 SIMPLE_JWT = {

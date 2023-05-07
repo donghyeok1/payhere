@@ -46,7 +46,9 @@ class LoginSerializer(serializers.ModelSerializer):
                 access_token = str(token.access_token)
             else:
                 raise serializers.ValidationError(
-                    "핸드폰 번호 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요."
+                    {
+                        "validation_error": "핸드폰 번호 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요."
+                    }
                 )
 
         results = {
@@ -56,3 +58,8 @@ class LoginSerializer(serializers.ModelSerializer):
         }
 
         return results
+
+    def validate_phone_number(self, value):
+        if not phone_number_regex.match(value):
+            raise serializers.ValidationError("핸드폰 번호 형식이 올바르지 않습니다.")
+        return value

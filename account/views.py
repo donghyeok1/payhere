@@ -22,7 +22,6 @@ class SignupView(APIView):
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         global result
-
         if serializer.is_valid():
             user = serializer.save()
             result["meta"]["code"] = status.HTTP_201_CREATED
@@ -66,10 +65,14 @@ class LoginView(APIView):
             result["data"] = serializer.validated_data
             return Response(result, status=status.HTTP_200_OK)
         else:
-            result["meta"]["code"] = status.HTTP_401_UNAUTHORIZED
             result["meta"]["message"] = serializer.errors
             result["data"] = "null"
-            return Response(result, status=status.HTTP_401_UNAUTHORIZED)
+            if "validation_error" in serializer.errors:
+                result["meta"]["code"] = status.HTTP_401_UNAUTHORIZED
+                return Response(result, status=status.HTTP_401_UNAUTHORIZED)
+            else:
+                result["meta"]["code"] = status.HTTP_400_BAD_REQUEST
+                return Response(result, status=status.HTTP_400_BAD_REQUEST)
 
 
 class LogoutView(APIView):
