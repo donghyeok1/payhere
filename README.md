@@ -89,7 +89,7 @@
 
 ### ***ERD*** 🏳
 
-> ![image](https://user-images.githubusercontent.com/95459089/236669047-80931b60-a012-41a5-b337-4aa7fe697277.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236669747-c21cf87d-a747-4e4e-9754-b57a890cdc75.png)
 
 <br>
 
@@ -99,32 +99,32 @@
 > ##### 사용자 회원가입
 > - 요청
 >
-> ![image](https://user-images.githubusercontent.com/95459089/220850047-98b40df0-19f0-4516-9c98-33955e39ef6f.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236670902-67cff547-fd65-477e-8555-6161a9e1079c.png)
 > - 응답
 >
-> ![image](https://user-images.githubusercontent.com/95459089/220853603-1e21b77d-37cc-4361-88e9-c3515797db5e.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236670917-d35bac50-63c9-4011-9f48-4437db0f1c32.png)
 > 
 > ##### 사용자 로그인
 >
 > - 요청
 >
-> ![image](https://user-images.githubusercontent.com/95459089/220854196-9ab534b6-7cb8-47fd-a6c5-4577ecbaa2b7.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236670936-a4121266-5eb8-4fce-aaa4-5b3960ac7597.png)
 > - 응답
 > 
-> ![image](https://user-images.githubusercontent.com/95459089/220854313-257119af-faa7-4b9e-84db-8f8cc74edfda.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236670954-1a5d98a7-8ebe-4362-b97e-edb012f1ee3f.png)
 > ##### 로그아웃
 >
 > - access_token 세팅
 >
-> ![image](https://user-images.githubusercontent.com/95459089/220854533-dfb0b38d-940a-40e6-8276-b779fc4c01b8.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236670995-fda91e64-6cc4-49ac-83d3-11a32ac0cb9f.png)
 >
 > - 요청
 >
-> ![image](https://user-images.githubusercontent.com/95459089/220854698-3c2efdb8-20bd-4a13-a6c2-deb19897822a.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236671056-a668f7a9-e858-4547-a604-23b45be1e1ea.png)
 >
 > - 응답
 >
-> ![image](https://user-images.githubusercontent.com/95459089/220854766-253c134e-4e26-4562-b5b1-ba63b39f94e0.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236671073-8574550d-13bc-4342-889d-a362ae9d151a.png)
 >
 > #### 루틴 관련 API
 > - access_token 세팅
