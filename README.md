@@ -81,9 +81,9 @@
 > 
 >   |  HTTP |  Path |  Method |  Permission |  목적 |
 >   | --- | --- | --- | --- | --- |
->   |**GET**, **POST** |/products/|LIST, CREATE| IsAuthenticated and Access_token |상품 등록 및 등록한 상품들 확인|
->   |**GET** |/products/?name={검색할 이름}|LIST| IsAuthenticated and Access_token |쿼리 스트링에 맞는 상품의 이름 초성 혹은 like 검색|
->   |**GET**, **PATCH**, **DELETE** |/products/<int:pk>/|RETRIEVE, UPDATE, DESTORY| IsAuthenticated and Access_token |자신의 루틴 단건 확인, 수정, 삭제|
+>   |**GET**, **POST** |/products/|LIST, CREATE| IsOwner and Access_token |상품 등록 및 등록한 상품들 확인|
+>   |**GET** |/products/?name={검색할 이름}|LIST| IsOwner and Access_token |쿼리 스트링에 맞는 상품의 이름 초성 혹은 like 검색|
+>   |**GET**, **PATCH**, **DELETE** |/products/<int:pk>/|RETRIEVE, UPDATE, DESTORY| IsOwner and Access_token |자신의 루틴 단건 확인, 수정, 삭제|
 
 <br>
 
@@ -245,7 +245,7 @@
 >
 > ![image](https://user-images.githubusercontent.com/95459089/236672353-274c6933-0edb-47ef-abd2-addd7fc95370.png)
 >
-> - **위의 사이트에서 생성한 secret key를 SECRET_KEY= 넣어주기
+> - **위의 사이트에서 생성한 secret key를 SECRET_KEY= 넣어주기**
 > - **나머지는 위의 그림처럼 입력**
 > 
 >
