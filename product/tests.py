@@ -610,7 +610,7 @@ class ProductListAPITest(APITestCase):
             self.client.post(self.read_product_url, data=data, format="json")
 
     def tearDown(self):
-        """상품 삭제 초기 설정 데이터 초기화"""
+        """상품 읽기 초기 설정 데이터 초기화"""
         self.client = None
         self.phone_number = None
         self.password = None
@@ -621,6 +621,7 @@ class ProductListAPITest(APITestCase):
         self.access_token = None
 
         self.read_product_url = None
+        self.search_product_url = None
 
         self.User.objects.all().delete()
         OutstandingToken.objects.all().delete()
@@ -695,7 +696,7 @@ class ProductListAPITest(APITestCase):
         self.client.credentials(HTTP_AUTHORIZATION=f"Bearer {self.access_token}")
         response = self.client.get(self.search_product_url + "ㅅㅋㄹㄹ", format="json")
         result = response.data
-        print(result)
+
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             {"code": 200, "message": "검색한 결과가 없습니다."},
@@ -732,3 +733,94 @@ class ProductListAPITest(APITestCase):
             response.json()["meta"],
         )
         self.assertEqual(len(result["data"]["products"]), 10)
+
+class ProductDetailAPITest(APITestCase):
+    User = get_user_model()
+    """
+    Product CRUD 중 Read(detail) 테스트
+    """
+
+    def setUp(self):
+        """기본적인 유저 설정 및 상품 등록"""
+        self.phone_number = "01055745810"
+        self.password = "test123!"
+        self.user = self.User.objects.create(
+            phone_number=self.phone_number, password=make_password(self.password)
+        )
+        self.read_product_url = reverse("products-list")
+
+        self.token = RefreshToken.for_user(self.user)
+        self.refresh_token = str(self.token)
+        self.access_token = str(self.token.access_token)
+
+        self.client = APIClient()
+        self.client.credentials(HTTP_AUTHORIZATION=f"Bearer {self.access_token}")
+
+        data = {
+            "category": "test_category",
+            "price": 10000,
+            "cost": 8000,
+            "name": "슈크림",
+            "description": "test_description",
+            "barcode": "test_barcode",
+            "expiration_date": "2023-05-30",
+            "size": "s",
+        }
+
+        response = self.client.post(self.read_product_url, data=data, format="json")
+
+        product_id = response.data["data"]["id"]
+        self.detail_product_url = self.read_product_url + f"{product_id}/"
+
+    def tearDown(self):
+        """상품 상세 조회 초기 설정 데이터 초기화"""
+        self.client = None
+        self.phone_number = None
+        self.password = None
+        self.user = None
+
+        self.token = None
+        self.refresh_token = None
+        self.access_token = None
+
+        self.read_product_url = None
+        self.detail_product_url = None
+
+        self.User.objects.all().delete()
+        OutstandingToken.objects.all().delete()
+        Product.objects.all().delete()
+        Category.objects.all().delete()
+
+    def test_list_detail_product_success(self):
+        """상품 상세 조회 성공"""
+        self.client.credentials(HTTP_AUTHORIZATION=f"Bearer {self.access_token}")
+        response = self.client.get(self.detail_product_url, format="json")
+        result = response.data["data"]
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(
+            {"code": 200, "message": "ok"},
+            response.json()["meta"],
+        )
+        self.assertEqual(result["category"]["name"], "test_category")
+        self.assertEqual(result["price"], 10000)
+        self.assertEqual(result["cost"], 8000)
+        self.assertEqual(result["name"], "슈크림")
+        self.assertEqual(result["name_initial"], "ㅅㅋㄹ")
+        self.assertEqual(result["description"], "test_description")
+        self.assertEqual(result["barcode"], "test_barcode")
+        self.assertEqual(result["expiration_date"], "2023-05-30")
+        self.assertEqual(result["size"], "s")
+
+    def test_list_detail_product_fail(self):
+        """자신이 작성하지 않았거나, 존재하지 않는 상품 상세 조회 실패"""
+        self.client.credentials(HTTP_AUTHORIZATION=f"Bearer {self.access_token}")
+        response = self.client.get(self.read_product_url + "1000/", format="json")
+        result = response.data
+
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+        self.assertEqual(
+            {"code": 404, "message": "해당 상품이 없습니다."},
+            response.json()["meta"],
+        )
+        self.assertEqual(result["data"], "null")
