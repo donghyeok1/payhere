@@ -1,6 +1,4 @@
-from django.db.models import Q
 from rest_framework import status, viewsets, pagination
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from .models import Category, Product
 from .permissions import IsOwner
@@ -164,7 +162,7 @@ class ProductViewSet(viewsets.ModelViewSet):
         if name:
             initial_sound_str = get_initial_sound_list(name)
             queryset = Product.objects.filter(
-                Q(name_initial__icontains=initial_sound_str) | Q(user=request.user.pk)
+                name_initial__icontains=initial_sound_str, user=request.user.pk
             )
 
         page = self.paginate_queryset(queryset)

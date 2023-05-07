@@ -695,6 +695,7 @@ class ProductListAPITest(APITestCase):
         self.client.credentials(HTTP_AUTHORIZATION=f"Bearer {self.access_token}")
         response = self.client.get(self.search_product_url + "ㅅㅋㄹㄹ", format="json")
         result = response.data
+        print(result)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             {"code": 200, "message": "검색한 결과가 없습니다."},
