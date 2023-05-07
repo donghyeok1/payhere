@@ -112,6 +112,7 @@
 > - 응답
 > 
 > ![image](https://user-images.githubusercontent.com/95459089/236670954-1a5d98a7-8ebe-4362-b97e-edb012f1ee3f.png)
+>
 > ##### 로그아웃
 >
 > - access_token 세팅
@@ -126,100 +127,94 @@
 >
 > ![image](https://user-images.githubusercontent.com/95459089/236671073-8574550d-13bc-4342-889d-a362ae9d151a.png)
 >
-> #### 루틴 관련 API
+> #### 상품 관련 API
 > - access_token 세팅
 > 
 > ![image](https://user-images.githubusercontent.com/95459089/220854533-dfb0b38d-940a-40e6-8276-b779fc4c01b8.png)
 > 
-> ##### 루틴 생성
+> ##### 상품 등록
 > 
 > - 요청 
 >
-> ![image](https://user-images.githubusercontent.com/95459089/220855636-fd19a3c7-9ceb-4eee-af36-01d7ca2adcc7.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236671135-493eba6c-08c4-4235-b0e4-6dbb4556f366.png)
 >
 > - 응답
 >
-> ![image](https://user-images.githubusercontent.com/95459089/220855717-203ef8d0-c6a4-4782-aaf4-f64b89d4f174.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236671157-50f63a14-5818-4cb3-91c3-b49e4bfdbde1.png)
 >
-> ##### 이번주 루틴 조회
+> ##### 상품 목록
 >
 > - 요청
 > 
-> ![image](https://user-images.githubusercontent.com/95459089/220856237-db187a4e-e5eb-4a91-86c3-c850c607654a.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236671173-0a0a0174-c953-4f71-892f-789f5b06c624.png)
 >  
 > - 응답
 > 
-> ![image](https://user-images.githubusercontent.com/95459089/220856027-49fe2215-dc95-4dbd-8683-73b1aa7d2468.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236671185-f5941dee-182a-46af-b1e3-578ac7c13710.png)
 >
-> ##### 루틴 요일 조회
+> ##### 상품 상세 조회
 >
 > - 요청
 > 
-> ![image](https://user-images.githubusercontent.com/95459089/220856180-82d6824a-24ee-4583-ba98-a34f8ec6bba4.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236671578-65eaf998-3499-479f-a301-2c4c44d29cf7.png)
 >
 > - 응답
 >
-> ![image](https://user-images.githubusercontent.com/95459089/220856349-94b4167d-30af-4011-ad7f-3bfc6dc8cf40.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236671589-ea3e7c76-f922-4bf3-ba8d-1dedbae71a50.png)
 >
-> ##### 루틴 수정
+> ##### 상품 부분 수정
 >
 > - 요청
 >
-> ![image](https://user-images.githubusercontent.com/95459089/220856590-e3789983-ebf3-4404-be77-df65e14faefe.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236671608-aaf92406-4ff1-4256-a3db-b9db4061437e.png)
 >
 > - 응답
 >
-> ![image](https://user-images.githubusercontent.com/95459089/220856651-b9d7dd9d-5450-4ec9-9305-2fa839f77fa3.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236671623-1efd8bef-b4fe-4205-95a9-f7f8c642ec52.png)
 >
-> ##### 루틴 단건 조회
+> ##### 상품 삭제
 >
 > - 요청
 >
-> ![image](https://user-images.githubusercontent.com/95459089/220856815-62f2e835-bd6e-45bd-aa62-49bbaffab589.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236671652-72c21c53-1be1-49e7-b308-bca244e4e218.png)
 >
 > - 응답
 >
-> ![image](https://user-images.githubusercontent.com/95459089/220856877-b2139b78-ed44-49ea-b4f3-90ce39113a8e.png)
+> **status code만 204 no content로 전달**
+> 
 >
-> ##### 루틴 단건 삭제
+> ##### 상품 초성 검색
 >
 > - 요청
 >
-> ![image](https://user-images.githubusercontent.com/95459089/220857062-2157696b-5740-465f-971c-c4c389045ea2.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236671745-1c6fdb6f-d922-485c-94f3-8c7510d66054.png)
 >
 > - 응답
 >
-> ![image](https://user-images.githubusercontent.com/95459089/220857113-086a5df8-36a8-4937-8071-2352b30c9d0a.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236671754-fc6917a9-759d-4af4-8555-87eca5a0c4cb.png)
 >
-> ##### 루틴 결과 조회
+> ##### 상품 like 검색
 >
 > - 요청
 >
-> ![image](https://user-images.githubusercontent.com/95459089/220857492-5e4cd0cf-ecf9-4bc8-b461-3a92fc37e5f8.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236671781-43751641-f846-4ffe-97b0-e76398bab932.png)
 >
 > - 응답
 >
-> ![image](https://user-images.githubusercontent.com/95459089/220857525-7b4a50f1-fd6e-433d-b4d3-f132db20be9e.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236671789-681a057a-5c20-43be-8aa3-5e2d07b1fa4d.png)
 >
-> ##### 루틴 결과 삭제
+> ##### 상품 조회 (cursor based pagination)
 >
 > - 요청
 >
-> ![image](https://user-images.githubusercontent.com/95459089/220857752-5d957cc5-6802-42a4-a6a0-aafb350fa9c0.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236671938-aec42547-1525-49ae-b2fc-9dec4d4228f8.png)
 >
 > - 응답
 >
-> ![image](https://user-images.githubusercontent.com/95459089/220857803-bd6d5ba6-1673-4e5f-a668-1c8a7d231cc9.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236671949-5113799d-0674-4259-a9fd-fb31fe4fa3d6.png)
+> 
+> **상품 목록이 10개가 넘어가는 경우 해당**
 >
-> ##### 루틴 결과 수정
->
-> - 요청
->
-> ![image](https://user-images.githubusercontent.com/95459089/223625265-ab65ed1b-ce2a-4f8e-8879-a1eb283fd7c9.png)
->
-> - 응답
->
-> ![image](https://user-images.githubusercontent.com/95459089/223625228-3569ea58-013a-4fbf-a166-3d067f30db1d.png)
 
 ### Installation
 
@@ -227,77 +222,52 @@
 >
 > <br>
 > 
-> **1. Baenaon repository clone**
+> **1. Payhere repository clone**
 > 
 > ```bash
-> git clone https://github.com/donghyeok1/danbi_problem.git
+> git clone https://github.com/donghyeok1/payhere.git
 > ```
+>
 > **2. backend 환경 설정**
 >
 > ```bash
-> cd danbi_problem
+> cd payhere
 > ```
-> **2-1 가상환경 생성 및 실행(git bash)**
 >
+> **2-1 환경 세팅**
+>
+> [django secret key 생성 사이트](https://djecrety.ir/)
+>
+> ![image](https://user-images.githubusercontent.com/95459089/236672311-f2839045-0ecd-4175-8e6a-f723e85fbf65.png)
+>
+> - 이동 후, Generate 클릭 후 키 복사
+> - .env 파일
+>
+> ![image](https://user-images.githubusercontent.com/95459089/236672353-274c6933-0edb-47ef-abd2-addd7fc95370.png)
+>
+> - **위의 사이트에서 생성한 secret key를 SECRET_KEY= 넣어주기
+> - **나머지는 위의 그림처럼 입력**
+> 
+>
+> **2-2 컨테이너 실행**
+> - docker-compose.yml이 있는 디렉토리로 이동
+> 
 > ```bash
-> python -m venv myvenv
-> source myvenv/Scripts/activate
-> ```
->
-> **2-2 requirements 라이브러리 설치**
-> 
-> ```bash
-> pip install -r requirements.txt
-> ```
->
-> **3. MySQL 데이터베이 생성 후 장고와 연동**
-> 
-> - MySQL Workbench 접속 후 새로운 connection 생성
-> 
-> ![image](https://user-images.githubusercontent.com/95459089/220859628-94c82e21-dedc-48e5-964d-10f4c6019b94.png)
-> 
-> - 생성 후, 접속해서 데이터 베이스 생성
-> 
-> ```sql
-> CREATE DATABASE danbi;
-> ```
->
-> - 왼쪽 스키마에 danbi 데이터 베이스 생긴 것 확인
->
-> ![image](https://user-images.githubusercontent.com/95459089/220860128-5dcb7197-24d7-41d7-8156-073dbfb30264.png)
->
-> - VSC나 Pycharm을 이용해 danbi_problem 프로젝트 열기
-> - danbi_problem app의 settings.py에 데이터베이스 설정
-> ```python
-> DATABASES = {
->     'default': {
->         'ENGINE': 'django.db.backends.mysql',
->         'NAME': 'danbi',
->         'USER': 'root',
->         'PASSWORD': '[root 계정의 비밀번호]',
->         'HOST': '127.0.0.1',
->         'PORT': '3306',
->         'OPTIONS': {
->             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"'
->         }
->     }
-> }
+> docker compose up
 > ```
 > 
-> - bash에서 migrate 진행 (생성한 myvenv 가상환경이 activate 되어 있는 상태여야 함.)
+> **3 결과**
+> - 이미지를 전부 가져오고, 빌드하는 과정에서 backend는 mysql과 연동 오류를 없애기 위해 dockerfile 실행 후, 20초의 sleep을 가지고 command를 실행한다.
+> - 조금 기다린 후 확인
+> - MySQL Workbench 접속.(127.0.0.1, root, qwer1234)
 >
-> ```bash
-> python manage.py makemigrations
-> python manage.py migrate
-> ```
+> ![image](https://user-images.githubusercontent.com/95459089/236672616-102bf871-6303-4426-805e-74bf498d25f9.png)
 > 
-> - 그 후, MySQL Workbench를 보면 아래 그림처럼 테이블들이 생긴 것을 볼 수 있다.
+> - web 데이터베이스가 생기고, migrate가 잘 된 것을 확인할 수 있다.
+> - payhere-backend 컨테이너 log 확인
 > 
-> ![image](https://user-images.githubusercontent.com/95459089/220861158-1776f24d-b8aa-43d6-9e88-4937460a129b.png)
-\
->
-> **4. 서버 실행**
-> ```bash
-> python manage.py runserver
-> ```
+> ![image](https://user-images.githubusercontent.com/95459089/236672651-0e6bd5f3-50e7-435b-ae57-9e0a2b3309e6.png)
 > 
+> - 서버가 잘 구동되는 것을 확인할 수 있다.
+> 
+
