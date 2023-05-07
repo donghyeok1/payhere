@@ -181,3 +181,20 @@ class ProductViewSet(viewsets.ModelViewSet):
             result["meta"]["message"] = "ok"
             result["data"] = serializer.data
             return Response(result, status=status.HTTP_200_OK)
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = Product.objects.filter(pk=kwargs["pk"], user=request.user.pk).first()
+        global result
+
+        if instance is not None:
+            serializer = self.get_serializer(instance)
+
+            result["meta"]["code"] = status.HTTP_200_OK
+            result["meta"]["message"] = "ok"
+            result["data"] = serializer.data
+            return Response(result, status=status.HTTP_200_OK)
+        else:
+            result["meta"]["code"] = status.HTTP_404_NOT_FOUND
+            result["meta"]["message"] = "해당 상품이 없습니다."
+            result["data"] = "null"
+            return Response(result, status=status.HTTP_404_NOT_FOUND)
