@@ -1,5 +1,7 @@
 from django.db import models
 
+from config import settings
+
 
 def initial_sound(string):
     """
@@ -46,7 +48,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     SIZE_CHOICES = (("s", "small"), ("l", "large"))
-
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     price = models.IntegerField()
     cost = models.IntegerField()
