@@ -35,21 +35,22 @@
 
 ### ***Summary*** 🔽
 > - Project 소개
->   - 루틴, 루틴 결과 CRUD 구현
->   - 카카오 Map API를 이용하여 지역 게시판과 연동
->   - DjangoRestFramework를 이용하여 회원, 루틴 정보 저장용 REST API 서버 구현
->   - JWT를 이용하여 OAuth 2.0 Auth 프로토콜 기반으로 Authentication 및 Authorization 구현
+>   - 상품 CRUD 구현
+>   - DjangoRestFramework를 이용하여 회원, 상품 관리 REST API 서버 구현
+>   - JWT를 이용한 Authentication 및 Authorization 구현
 
 
 ### ***Requirments*** 🤔
 > - BACKEND(Djagno Authentication Server)
->   - django~=3.0.0
->   - djangorestframework~=3.11.0
->   - djangorestframework-simplejwt
->   - mysqlclient
+>   - django~=4.2.1
+>   - django-environ==0.10.0
+>   - djangorestframework~=3.14.0
+>   - djangorestframework-simplejwt~=5.2.2
+>   - mysql-connector-python==8.0.33
+>   - PyMySQL==1.0.3
 
 > - DataBase
->   - MySQL
+>   - MySQL:5.7
 
 <br>
 
@@ -59,6 +60,7 @@
 >   - VScode
 >   - Postman
 >   - MySQL Workbench
+>   - Docker
 
 
 <br>
@@ -70,26 +72,24 @@
 > 
 >   |  HTTP |  Path |  Method |  Permission |  목적 |
 >   | --- | --- | --- | --- | --- |
->   |**POST** |/account/signup/|CREATE| AllowAny |사용자 회원가입|
->   |**POST** |/account/login/|NONE| AllowAny |사용자 로그인, access_token, refresh_token 생성 및 반환|
->   |**POST** |/account/logout/|NONE| IsAuthenticated |사용자 로그아웃, BlacklistedToken에 refresh_token 추가|
+>   |**POST** |/accounts/signup/|CREATE| AllowAny |사용자 회원가입|
+>   |**POST** |/accounts/login/|NONE| AllowAny |사용자 로그인, access_token, refresh_token 생성 및 반환|
+>   |**POST** |/accounts/logout/|NONE| IsAuthenticated |사용자 로그아웃, BlacklistedToken에 refresh_token 추가|
 > 
 > 
-> 2️⃣ 루틴 관련 API
+> 2️⃣ 상품 관련 API
 > 
 >   |  HTTP |  Path |  Method |  Permission |  목적 |
 >   | --- | --- | --- | --- | --- |
->   |**GET**, **POST** |/routines/|LIST, CREATE| IsAuthenticated and Access_token |자신의 이번주 루틴 조회 및 생성|
->   |**GET** |/routines/?q={%Y-%m-%d}|LIST| IsAuthenticated and Access_token |쿼리 스트링에 맞는 자신의 해당 요일 루틴 조회|
->   |**GET**, **PUT**, **DELETE** |/routines/<int:pk>/|RETRIEVE, UPDATE, DESTORY| IsAuthenticated and Access_token |자신의 루틴 단건 확인, 수정, 삭제|
->   |**GET** |/routines/<int:pk>/result/|LIST| IsAuthenticated and Access_token |pk에 해당하는 routine_id를 가진 결과 조회|
->   |**PUT**, **DELETE** |/routines/<int:id>/result/<int:pk>/|UPDATE, DESTORY| IsAuthenticated and Access_token |id에 해당하는 routine_id를 가진 루틴의 해당 pk를 가진 결과 수정, 삭제|
+>   |**GET**, **POST** |/products/|LIST, CREATE| IsAuthenticated and Access_token |상품 등록 및 등록한 상품들 확인|
+>   |**GET** |/products/?name={검색할 이름}|LIST| IsAuthenticated and Access_token |쿼리 스트링에 맞는 상품의 이름 초성 혹은 like 검색|
+>   |**GET**, **PATCH**, **DELETE** |/products/<int:pk>/|RETRIEVE, UPDATE, DESTORY| IsAuthenticated and Access_token |자신의 루틴 단건 확인, 수정, 삭제|
 
 <br>
 
 ### ***ERD*** 🏳
 
-> ![image](https://user-images.githubusercontent.com/95459089/220845429-e796fc1c-5079-436b-b1e2-cc3199f01723.png)
+> ![image](https://user-images.githubusercontent.com/95459089/236669047-80931b60-a012-41a5-b337-4aa7fe697277.png)
 
 <br>
 
