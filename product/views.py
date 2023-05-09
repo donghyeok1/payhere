@@ -82,7 +82,7 @@ def get_initial_sound_list(string):
 
 
 class ProductViewSet(viewsets.ModelViewSet):
-    queryset = Product.objects.all()
+    queryset = Product.objects.all().select_related('user', 'category')
     serializer_class = ProductSerializer
     permission_classes = [IsOwner]
     pagination_class = ProductPagination
@@ -156,27 +156,26 @@ class ProductViewSet(viewsets.ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     def list(self, request, *args, **kwargs):
-        queryset = Product.objects.filter(user=request.user.pk)
         name = self.request.query_params.get("name", None)
         global result
         if name:
             initial_sound_str = get_initial_sound_list(name)
-            queryset = Product.objects.filter(
+            self.queryset = Product.objects.filter(
                 name_initial__icontains=initial_sound_str, user=request.user.pk
             )
 
-        page = self.paginate_queryset(queryset)
+        page = self.paginate_queryset(self.queryset)
 
-        if len(queryset) > 10:
+        if len(self.queryset) > 10:
             serializer = self.get_serializer(page, many=True)
             return self.get_paginated_response(serializer.data)
-        elif len(queryset) == 0:
+        elif len(self.queryset) == 0:
             result["meta"]["code"] = status.HTTP_200_OK
             result["meta"]["message"] = "검색한 결과가 없습니다."
             result["data"] = "null"
             return Response(result, status=status.HTTP_200_OK)
         else:
-            serializer = self.get_serializer(queryset, many=True)
+            serializer = self.get_serializer(self.queryset, many=True)
             result["meta"]["code"] = status.HTTP_200_OK
             result["meta"]["message"] = "ok"
             result["data"] = serializer.data
