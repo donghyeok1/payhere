@@ -153,7 +153,7 @@ class ProductViewSet(viewsets.ModelViewSet):
         return Response(result, status=status.HTTP_200_OK)
 
     def destroy(self, request, *args, **kwargs):
-        instance = Product.objects.filter(pk=kwargs["pk"], user=request.user.pk).first()
+        instance = self.queryset.get(pk=kwargs["pk"])
         self.perform_destroy(instance)
 
         return Response(status=status.HTTP_204_NO_CONTENT)
@@ -183,7 +183,7 @@ class ProductViewSet(viewsets.ModelViewSet):
             return Response(result, status=status.HTTP_200_OK)
 
     def retrieve(self, request, *args, **kwargs):
-        instance = Product.objects.filter(pk=kwargs["pk"], user=request.user.pk).first()
+        instance = self.queryset.get(pk=kwargs["pk"])
         global result
 
         if instance is not None:
