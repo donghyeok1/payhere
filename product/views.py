@@ -49,6 +49,7 @@ def get_initial_sound_list(string):
     """
     한글 초성 리스트를 반환하는 함수입니다.
     """
+
     CHOSUNG_LIST = [
         "ㄱ",
         "ㄲ",
@@ -70,7 +71,9 @@ def get_initial_sound_list(string):
         "ㅍ",
         "ㅎ",
     ]
+
     result = ""
+
     for s in string:
         if s != " ":
             if "가" <= s <= "힣":
