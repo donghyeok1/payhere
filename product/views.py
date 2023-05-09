@@ -160,9 +160,7 @@ class ProductViewSet(viewsets.ModelViewSet):
         global result
         if name:
             initial_sound_str = get_initial_sound_list(name)
-            self.queryset = Product.objects.filter(
-                name_initial__icontains=initial_sound_str, user=request.user.pk
-            )
+            self.queryset = self.queryset.filter(name_initial__icontains=initial_sound_str)
 
         page = self.paginate_queryset(self.queryset)
 
