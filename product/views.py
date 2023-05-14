@@ -93,7 +93,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         request.data["user"] = request.user.pk
-        category, is_created = Category.objects.get_or_create(
+        category, _ = Category.objects.get_or_create(
             name=request.data["category"]
         )
         request.data["category"] = category.pk
@@ -126,7 +126,6 @@ class ProductViewSet(viewsets.ModelViewSet):
         global result
         try:
             instance = self.queryset.get(id=kwargs["pk"])
-
             if instance.user_id != request.user.pk:
                 result["meta"]["code"] = status.HTTP_401_UNAUTHORIZED
                 result["meta"]["message"] = "해당 API를 사용할 권한이 없습니다."
@@ -141,11 +140,10 @@ class ProductViewSet(viewsets.ModelViewSet):
                 )
                 request.data["category"] = category.pk
 
-            instance = self.get_object()
             serializer = self.get_serializer(instance, data=request.data, partial=True)
 
             try:
-                serializer.is_valid(raise_exception=True)
+                serializer.is_valid()
                 serializer.save()
                 result["meta"]["code"] = status.HTTP_200_OK
                 result["meta"]["message"] = "ok"
