@@ -91,13 +91,6 @@ class ProductViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     pagination_class = ProductPagination
 
-    def get_serializer_context(self):
-        context = super().get_serializer_context()
-
-        if self.action in ["create", "update", "partial_update"]:
-            context["category"] = Category.objects.all()
-        return context
-
     def create(self, request, *args, **kwargs):
         request.data["user"] = request.user.pk
         category, is_created = Category.objects.get_or_create(
