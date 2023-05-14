@@ -6,8 +6,6 @@ services:
     command: --init-file /init/web.sql
     volumes:
       - ./db/mysql/data:/var/lib/mysql
-      - ./db/mysql/config:/etc/mysql/conf.d
-      - ./mysql_conf/my.cnf:/etc/mysql/my.cnf
       - ./init:/init
     restart: always
     environment:
@@ -15,14 +13,18 @@ services:
       MYSQL_ROOT_PASSWORD: qwer1234
     ports:
       - "3306:3306"
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 10s
+      retries: 3
 
   backend:
     build:
       context: .
       dockerfile: Dockerfile
-    command: sh -c "sleep 20 && python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: sh -c "python manage.py makemigrations && python manage.py migrate && gunicorn config.wsgi --bind 0.0.0.0:8000"
     ports:
       - "8000:8000"
     depends_on:
       db:
-        condition: service_started
+        condition: service_healthy
