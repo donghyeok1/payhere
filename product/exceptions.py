@@ -18,6 +18,14 @@ def custom_exception_handler(exc, context):
                 result,
                 status=status.HTTP_401_UNAUTHORIZED,
             )
+        elif response.status_code == 404:
+            result["meta"]["code"] = status.HTTP_404_NOT_FOUND
+            result["meta"]["message"] = "존재하지 않는 게시글입니다."
+            result["data"] = "null"
+            return Response(
+                result,
+                status=status.HTTP_404_NOT_FOUND,
+            )
         else:
             result["meta"]["code"] = status.HTTP_400_BAD_REQUEST
             result["meta"]["message"] = "데이터 형식에 맞게 채워주세요."
